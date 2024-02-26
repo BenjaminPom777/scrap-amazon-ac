@@ -8,7 +8,9 @@ const scrapeAutocomplete = async (searchTerm) => {
 
   await page.goto('https://amazon.com');
 
-  await page.type('#twotabsearchtextbox', searchTerm);
+  const searchSelector = '#twotabsearchtextbox';
+  await page.waitForSelector(searchSelector);
+  await page.type(searchSelector, searchTerm);
 
   // Wait for the autocomplete suggestions to appear
   const autocompleteSelector = '.s-suggestion-container';
@@ -41,4 +43,4 @@ const scrapeAutocomplete = async (searchTerm) => {
   await browser.close();
 }
 
-scrapeAutocomplete('drink');
+scrapeAutocomplete('lol');
